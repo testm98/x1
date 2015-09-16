@@ -1,65 +1,76 @@
-//////// What am I trying to do???
-//////// What is my name?  (CST 112; today's date?)
+//x1 assignment//
+//Matthew Testa (CST 112; 9/11/15)
 
-//// GLOBALS:  coordinates, speed, etc.
-float x, y;       // Position of creature.
-float dx, dy;     // Speed.
+//GLOBALS point plot and speed
+float x, y;
+float dx, dy;
 float horizon;
 
-//// SETUP:  window size, initialization (start in middle of screen).
+//SETUP: size
 void setup() {
-  size( 640,480);
-  horizon=  height/4;
-  x=  width/2;
-  y=  height/2;
-  dx=  3;
-  dy=  2;
+  size (800, 550);
+  horizon = height/3;
+  x = width/2;
+  y = height/2;
+  dx = 4;
+  dy = 5;
 }
 
-//// NEXT FRAME:  scene, action, show.
+//SCENE: objects and shapes
 void draw() {
-  //// SCENE:  sky, sun, tree, house, etc.
-  background( 100,150,200 );                // sky
-  fill( 255,255,0 );
-  ellipse( width*3/4, height/8, 40,40 );    // sun
-  // Grass
-  fill( 100,200,100 );
-  rect( 0,horizon, width,height*3/4 );      // grass.
+  background(230, 200, 200); // sky //
   
-  /* INSERT YOUR CODE HERE! */
-  triangle( 150,horizon, 120,horizon-50, 180,horizon-50  );  // tree
-  text( "This is NOT a good tree; please fix it!", 150,horizon );
-                                            // house
-
+  fill(250, 200, 100); 
+  ellipse( width*4/5, height/9, 65,65); // sun //
+  
+  fill( 130,230, 120);
+  rect(0, horizon, width, height*4/5); // grass // 
+ 
+  fill(200,100,60); //tree//
+  rect( 100, horizon, width/35, -height/4 );
+  fill(80,240,20);
+  triangle(60, horizon-40, 110, horizon-140, 160, horizon-40);
+  triangle(80, horizon-100, 110, horizon-160, 140, horizon-100);
+  
+  fill(140, 60, 120); //house//
+  rect(270, horizon, width/5, -height/6);
+  fill(255,0,0);
+  rect(335, horizon, width/35, -height/12);
+  
   fill(0);
-  text( "My name is Mud", 10,height-20 );                                          
-                                            
-  //// ACTION:  move (x,y) coordinates.
-  x=  x + dx;
-  y=  y + dy;
+  text( "Matt Testa", 700, height/3); 
   
-  //// SHOW:  display the creature at (x,y)
+  x= x + dx;
+  y= y + dy;
 
-  /* INSERT YOUR CODE HERE! */
-  fill(255,0,0); rect( x,y, 30,50 );        /* REPLACE THIS WITH YOUR OWN CODE! */
-  text( "Fred", x,y );
+fill(255);  
+ellipse(x,y, 80,65);
+
+//eyes//
+fill(180); 
+ellipse(x-15,y-5, 20,20);
+fill(180);
+ellipse(x+15,y-5, 20,20);
+
+//mouth//
+fill(200,0,0);
+rect(x,y+8, 40,25);
+
+//teeth//
+fill(255,255,255);
+rect(x,y+8, 10,5);
+rect(x+30,y+8, 10,5);
+  
+fill(0);
+text( "Ralph", x,y+50);
 
 }
 
-
-//////// HANDLERS:  mouse clicks, keys
+//speed, mouse clicks, exit//
 void mousePressed() {
-  x=  mouseX;                             // Set (x,y) to mouse
-  y=  mouseY;
-  //
-  dx=  random( -6, +6 );                  // random speed.
-  dy=  random( -4, +4 );
+  x= mouseX;
+  y= mouseY;
+  //speed//
+  dx= random( -1, +4);
+  dy= random( -2, +3);
 }
-
-void keyPressed() {
-  if (key == 'q') {
-    exit();                           // press 'q' key to QUIT.
-  }
-}
-
-
